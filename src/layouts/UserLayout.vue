@@ -9,10 +9,10 @@
 export default {
   data() {
     return {
-      key: "value"
-    };
+      key: 'value'
+    }
   }
-};
+}
 </script>
 
 <style lang="less" scoped></style>
