@@ -1,11 +1,12 @@
 <template>
   <div>
-    登录页
+    <div class="">登录页</div>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'login',
   data() {
     return {
       key: "value"

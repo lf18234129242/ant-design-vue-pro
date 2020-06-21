@@ -1,6 +1,6 @@
 <template>
   <div>
-    layout
+    <div class="">ant design vue pro</div>
     <router-view></router-view>
   </div>
 </template>
