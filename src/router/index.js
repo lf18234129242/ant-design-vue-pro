@@ -163,9 +163,7 @@ router.beforeEach((to, from, next) => {
   if (to.path !== from.path) { // 同个页面跳转不显示进度条
     NProgress.start() // 页面加载、接口请求进度条
   }
-  console.log('to.matched', to.matched)
   const record = findLast(to.matched, record => record.meta.authority)
-  console.log('record', record)
   if (record && !check(record.meta.authority)) {
     if (!isLogin() && to.path !== '/user/login') {
       next({
