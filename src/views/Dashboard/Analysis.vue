@@ -6,7 +6,8 @@
 
 <script>
 import Chart from '@/components/Chart'
-import random from 'lodash/random'
+// import random from 'lodash/random'
+import axios from 'axios'
 export default {
   name: 'analysis',
   components: {
@@ -14,33 +15,41 @@ export default {
   },
   data() {
     return {
-      chartOption: {
-        title: {
-          text: '入门示例'
-        },
-        tooltip: {},
-        xAxis: {
-          data: ['衬衫', '羊毛衫', '鞋子', '褥子', '袜子', '高跟鞋']
-        },
-        yAxis: {},
-        series: [{
-          name: '销量',
-          type: 'bar',
-          data: [5,10,20,40,30,60]
-        }]
-      }
+      chartOption: {}
     }
   },
   mounted () {
-    this.interval = setInterval(() => {
-      this.chartOption.series[0].data = this.chartOption.series[0].data.map(
-        () => random(100)
-      )
-    }, 3000);
+    this.getChartData()
+    // this.interval = setInterval(() => {
+    //   this.getChartData()
+    // }, 3000);
   },
   beforeDestroy() {
     clearInterval(this.interval)
-  }
+  },
+  methods: {
+    getChartData() {
+      axios.get('/api/dashboard/chart', {params: {
+        ID: 12345
+      }}).then(res => {
+        this.chartOption = {
+          title: {
+            text: '入门示例'
+          },
+          tooltip: {},
+          xAxis: {
+            data: ['衬衫', '羊毛衫', '鞋子', '褥子', '袜子', '高跟鞋']
+          },
+          yAxis: {},
+          series: [{
+            name: '销量',
+            type: 'bar',
+            data: res.data
+          }]
+        }
+      })
+    }
+  },
 }
 </script>
 
