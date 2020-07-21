@@ -5,8 +5,11 @@ import store from "./store";
 import Authorized from './components/Authorized'
 import Auth from './directives/auth'
 import { Button, Layout, Icon, Drawer, Radio, Menu } from "ant-design-vue";
+import request from './../src/utils/request'
 
 Vue.config.productionTip = false;
+
+Vue.prototype.$request = request
 
 Vue.component('Authorized', Authorized)
 

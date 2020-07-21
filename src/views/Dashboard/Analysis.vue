@@ -7,7 +7,7 @@
 <script>
 import Chart from '@/components/Chart'
 // import random from 'lodash/random'
-import axios from 'axios'
+// import axios from 'axios'
 export default {
   name: 'analysis',
   components: {
@@ -29,9 +29,13 @@ export default {
   },
   methods: {
     getChartData() {
-      axios.get('/api/dashboard/chart', {params: {
-        ID: 12345
-      }}).then(res => {
+      this.$request({
+        method: 'get',
+        url: '/api/dashboard/chart1',
+        params: {
+          ID: 12345
+        }
+      }).then(res => {
         this.chartOption = {
           title: {
             text: '入门示例'
